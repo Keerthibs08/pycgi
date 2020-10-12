@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Python Code</title>
+    <style>
+      /* Popup Box */
+      /* The Modal (background) */
+      .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 8888; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      /* Modal Content/Box */
+      .modal-content {
+      background-color: #fefefe;
+      margin: 10vh auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%; /* Could be more or less, depending on screen size */
+      }
+      @media (min-width: 1366px) {
+      .modal-content {
+      background-color: #fefefe;
+      margin: 10vh auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 30%; /* Could be more or less, depending on screen size */
+      }
+      }
+      h2, p {
+      margin: 0 0 20px;
+      font-weight: 400;
+      color: #666;
+      }
+      span{
+      color: #666;
+      display:block;
+      padding:0 0 5px;
+      }
+      form {
+      padding: 25px;
+      margin: 25px;
+      box-shadow: 0 2px 5px #f5f5f5; 
+      background: #eee; 
+      }
+      input, textarea {
+      width: calc(100% - 18px);
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #1c87c9;
+      outline: none;
+      }
+      .contact-form button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #1c87c9; 
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      }
+      button:hover {
+      background: #2371a0;
+      }    
+      /* The Close Button */
+      .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      }
+      button.button {
+      background-color: #1c87c9;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size:16px;
+      cursor:pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Python Program with Dynamodb</h2>
+    <p>
+      <button class="button" data-modal="modalOne">Register</button>
+    </p>
+    <p>
+      <button class="button" data-modal="modalTwo">Login</button>
+    </p>
+    <div id="modalOne" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <a class="close">&times;</a>
+        <form action="http://localhost/login_my/task2/register.py" method="post">
+            <h2>Register Form</h2>
+            <div>
+                Username:<input type="text" name="username">
+                Password:<input type="password" name="password">
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="modalTwo" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <span class="close">&times;</span>
+          <form action="http://localhost/login_my/task2/login_conn.py" method="post">
+            <h2>Login Form</h2>
+            <div>
+                Username:<input type="text" name="username">
+                Password:<input type="password" name="password">
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      var modalBtns = [...document.querySelectorAll(".button")];
+      modalBtns.forEach(function(btn){
+        btn.onclick = function() {
+          var modal = btn.getAttribute('data-modal');
+          document.getElementById(modal).style.display = "block";
+        }
+      });
+      
+      var closeBtns = [...document.querySelectorAll(".close")];
+      closeBtns.forEach(function(btn){
+        btn.onclick = function() {
+          var modal = btn.closest('.modal');
+          modal.style.display = "none";
+        }
+      });
+      
+      window.onclick = function(event) {
+        if (event.target.className === "modal") {
+          event.target.style.display = "none";
+        }
+      }
+
+    </script>
+  </body>
+</html>
